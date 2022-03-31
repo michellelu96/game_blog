@@ -28,7 +28,7 @@ module.exports = {
     },
 
     updateGame:(req,res) =>{
-        const id = req.params.id;
+        // const id = req.params.id;
         const name = req.body.name;
         const rating = req.body.rating;
         const description = req.body.description;
@@ -44,9 +44,9 @@ module.exports = {
             newUpdatedData.image = image;
         }
 
-        const updatedGame = newUpdatedData
+        
 
-        Game.findOneAndUpdate(id, updatedGame,
+        Game.findOneAndUpdate({_id: req.params.id}, newUpdatedData,
                     {
                         new: true,
                         runValidators: true
